@@ -42,6 +42,11 @@ jobs:
             test -s "booking-preview/$file"
             cp "booking-preview/$file" _site/booking-preview/
           done
+          mkdir -p _site/booking
+          for file in index.html style.css app.js model.js live.js config.json privacy.html; do
+            test -s "booking/$file"
+            cp "booking/$file" _site/booking/
+          done
       - name: Upload static pages
         uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
         with:
