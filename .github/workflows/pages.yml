@@ -37,6 +37,11 @@ jobs:
           done
           mkdir -p _site
           cp index.html privacy.html terms.html style.css .nojekyll _site/
+          mkdir -p _site/booking-preview
+          for file in index.html style.css app.js model.js; do
+            test -s "booking-preview/$file"
+            cp "booking-preview/$file" _site/booking-preview/
+          done
       - name: Upload static pages
         uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
         with:
