@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://ztpvzeihrmuknlevimyh.supabase.co https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; form-action 'none'; base-uri 'none'">
-  <meta name="description" content="预约与 William Lu 交流，自由选择北京时间每天13点到19点内的起止时间。"><meta name="referrer" content="no-referrer">
+  <meta name="description" content="预约与 William Lu 交流，自由选择起止时间；北京时间2026年10月5日至12日延长开放至24点。"><meta name="referrer" content="no-referrer">
   <meta name="color-scheme" content="light">
   <title>选择你的时间 · William Lu</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23154ee8'/%3E%3Cpath d='M9 8v16h14M14 8v11h9' fill='none' stroke='white' stroke-width='3'/%3E%3C/svg%3E">
@@ -16,7 +16,7 @@
   <div class="preview-notice"><span class="preview-tag">自由选时段</span><span>提交后核对日历，确认成功才会完成预约。</span><a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2ubrtb4t8B_dfNQj2cVqf2xVj-0PSCsmJ9FxzkIEmoyxvs0Vf07b7ag7_V-HH5pFwR3_W0ofeP" target="_blank" rel="noopener">使用现有 Google 预约 ↗</a></div>
   <header class="topbar"><a href="./" class="wordmark" aria-label="William Lu 预约首页"><span class="monogram">WL</span><span>William Lu<span class="wordmark-sub">预约交流</span></span></a><span class="time-zone">北京时间 <strong>UTC+8</strong></span></header>
   <main>
-    <div class="intro"><div><p class="eyebrow">留一段时间，好好聊聊</p><h1>你来决定，聊多久。</h1></div><p class="intro-note">周一至周日 · 13:00–19:00<br>至少提前 24 小时，开放未来 30 天</p></div>
+    <div class="intro"><div><p class="eyebrow">留一段时间，好好聊聊</p><h1>你来决定，聊多久。</h1></div><p class="intro-note">周一至周日 · 13:00–19:00<br>2026年10月5–12日延长至24:00<br>至少提前 24 小时，开放未来 30 天</p></div>
     <div class="booking-layout">
       <section class="date-panel" aria-labelledby="date-heading">
         <div class="step"><span>01</span><h2 id="date-heading">选个日期</h2></div>
@@ -36,12 +36,12 @@
       <section class="details-panel" aria-labelledby="details-heading">
         <div class="step"><span>03</span><h2 id="details-heading">确认时间段</h2></div>
         <div class="chosen-date" id="summary-date"></div>
-        <div class="time-inputs"><label>开始时间<input type="time" id="start-time" min="13:00" max="19:00" step="60" value="13:00"></label><span aria-hidden="true">—</span><label>结束时间<input type="time" id="end-time" min="13:00" max="19:00" step="60" value="14:00"></label></div>
-        <div class="duration-summary"><span>这次交流</span><strong id="duration-summary">1 小时</strong></div>
+        <div class="time-inputs"><label>开始时间<input type="time" id="start-time" min="13:00" max="19:00" step="60" value="13:00"></label><span aria-hidden="true">—</span><label>结束时间<input type="text" id="end-time" placeholder="HH:MM" maxlength="5" value="14:00" aria-describedby="midnight-hint"></label></div>
+        <p id="midnight-hint" class="submit-hint">10月5–12日结束时间可填 24:00，表示当天结束（次日零点）。</p><div class="duration-summary"><span>这次交流</span><strong id="duration-summary">1 小时</strong></div>
         <div id="availability-status" class="availability-status" role="status" aria-live="polite"></div>
         <button type="button" id="continue" class="primary-button">继续预约 <span aria-hidden="true">→</span></button>
         <p class="submit-hint">下一步填写信息，并核对整段时间是否空闲。</p>
-        <dl class="details-list"><div><dt>时间范围</dt><dd>每天 13:00–19:00</dd></div><div><dt>预约间隔</dt><dd>前后保留 15 分钟</dd></div><div><dt>会议方式</dt><dd>预约后另行确认</dd></div></dl>
+        <dl class="details-list"><div><dt>时间范围</dt><dd id="hours-summary">当天 13:00–19:00</dd></div><div><dt>预约间隔</dt><dd>前后保留 15 分钟</dd></div><div><dt>会议方式</dt><dd>预约后另行确认</dd></div></dl>
       </section>
     </div>
     <aside class="demo-toolbar"><span id="refresh-state">正在查询忙闲</span><button type="button" id="refresh-availability" class="text-button">更新忙闲</button></aside>

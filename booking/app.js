@@ -1,7 +1,8 @@
-import {OPEN,CLOSE,DAY,beijingDate,addDays,toMinutes,timeText,durationText,validateRange} from './model.js';
+import {OPEN,closingMinute,DAY,beijingDate,addDays,toMinutes,timeText,durationText,validateRange} from './model.js';
 import {live,currentTime,initialize,readDay,mountChallenge,submit,openExisting,retryingRequest} from './live.js';
 const $ = id => document.getElementById(id);
 const state = {date:addDays(beijingDate(),2),start:OPEN,end:OPEN+60};
+let CLOSE=closingMinute(state.date);
 let month = state.date.slice(0,7), drag = null;
 const dateLong = date => new Intl.DateTimeFormat('zh-CN',{month:'long',day:'numeric',weekday:'long',timeZone:'Asia/Shanghai'}).format(new Date(date+'T12:00:00+08:00'));
 const blocks = () => live.busy;
@@ -57,6 +58,15 @@ function renderRange(syncInputs=true) {
   if(syncInputs) {$('start-time').value=timeText(state.start);$('end-time').value=timeText(state.end);}
 }
 function render() {
+  CLOSE=closingMinute(state.date);
+  const labels=document.querySelector('.time-labels');labels.replaceChildren();
+  for(let minute=OPEN;minute<=CLOSE;minute+=60){const label=document.createElement('span');label.textContent=timeText(minute);labels.append(label);}
+  $('timeline').style.setProperty('--hours',String((CLOSE-OPEN)/60));
+  $('timeline').style.setProperty('--quarters',String((CLOSE-OPEN)/15));
+  $('timeline').style.height=CLOSE===1440?'660px':'';
+  $('timeline').setAttribute('aria-label',`13:00至${timeText(CLOSE)}时间轴，可在右侧输入框精确选择`);
+  $('hours-summary').textContent=`当天 13:00–${timeText(CLOSE)}`;
+  $('start-time').max=CLOSE===1440?'23:59':'18:59';
   renderCalendar();renderBusy();renderRange();
   $('selected-date').textContent=dateLong(state.date);$('summary-date').textContent=dateLong(state.date);
 }

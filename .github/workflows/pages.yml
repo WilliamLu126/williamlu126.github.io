@@ -43,7 +43,7 @@ jobs:
             cp "booking-preview/$file" _site/booking-preview/
           done
           mkdir -p _site/booking
-          for file in index.html style.css app.js model.js live.js config.json privacy.html; do
+          for file in index.html style.css app.js model.js hours.mjs live.js config.json privacy.html; do
             test -s "booking/$file"
             cp "booking/$file" _site/booking/
           done
