@@ -1,4 +1,4 @@
-import {OPEN,closingMinute,DAY,beijingDate,addDays,toMinutes,timeText,durationText,validateRange} from './model.js';
+import {OPEN,closingMinute,DAY,beijingDate,addDays,toMinutes,timeText,durationText,validateRange} from './model.js?v=20260925-hours';
 import {live,currentTime,initialize,readDay,mountChallenge,submit,openExisting,retryingRequest} from './live.js';
 const $ = id => document.getElementById(id);
 const state = {date:addDays(beijingDate(),2),start:OPEN,end:OPEN+60};
